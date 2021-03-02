@@ -20,6 +20,15 @@ Things you may want to cover:
   * npm install --save-dev redux-devtools-extension
   * npm install axios
   * npm install --save reactstrap react react-dom
+  * npm install react-bootstrap-table-next --save
+  * npm i @fortawesome/react-fontawesome
+  * npm i @fortawesome/free-solid-svg-icons
+  * npm install react-bootstrap-table2-toolkit --save
+  * npm install react-bootstrap-table2-paginator --save
+  * npm install sweetalert --save
+  * npm install redux-form --save
+  * npm install prop-types --save
+  * npm install @fortawesome/fontawesome-svg-core --save
   * yarn install
 
 * Source
