@@ -13,8 +13,28 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import swal from "sweetalert";
+import { deleteProduct } from "../../actions/productAction";
 
 const { SearchBar } = Search;
+
+const handleClick = (dispatch, id) => {
+  swal({
+    title: "Are you sure?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      dispatch(deleteProduct(id))
+      swal("Product data deleted successfully", {
+        icon: "success",
+      })
+    } else {
+      swal("Data failed to delete")
+    }
+  })
+}
 
 const defaultSorted = [
   {
@@ -25,7 +45,8 @@ const defaultSorted = [
 
 const mapStateToProps = (state) => {
   return {
-    getProductsList: state.products.getProductsList
+    getProductsList: state.products.getProductsList,
+    errorProductsList: state.products.errorProductsList,
   }
 }
 
@@ -55,6 +76,16 @@ const TableComponent = (props) => {
                 <FontAwesomeIcon icon={faInfo} /> Detail
               </Button>
             </Link>
+
+            <Link to={"edit/"+row.id}>
+              <Button color="dark" className="mr-2">
+                <FontAwesomeIcon icon={faEdit} /> Edit
+              </Button>
+            </Link>
+
+            <Button color="dark" className="mr-2" onClick={() => handleClick(props.dispatch, row.id)}>
+              <FontAwesomeIcon icon={faTrash} /> Delete
+            </Button>
           </div>
         )
       }
@@ -76,7 +107,7 @@ const TableComponent = (props) => {
             <div>
               <Row>
                 <Col>
-                  <Link to="/create">
+                  <Link to="/new">
                     <Button color="dark" className="mr-2">
                       <FontAwesomeIcon icon={faUserPlus} /> Create User
                     </Button>
