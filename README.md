@@ -35,3 +35,4 @@ Things you may want to cover:
   * https://dev.to/jack/organizing-your-react-app-into-modules-d6n
   * https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-project-with-a-react-frontend
   * https://www.freecodecamp.org/news/how-to-create-a-rails-project-with-a-react-and-redux-front-end-8b01e17a1db/
+  * https://www.youtube.com/watch?v=vzEEfAj45zw (Deploy in digital ocean)
