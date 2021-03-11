@@ -7,8 +7,9 @@ import swal from "sweetalert";
 
 const mapStateToProps = (state) => {
   return {
-    getReponDataProduct: state.products.getReponDataProduct,
-    errorResponDataProduct: state.products.errorResponDataProduct
+    getResponDataProduct: state.products.getResponDataProduct,
+    errorResponDataProduct: state.products.errorResponDataProduct,
+    productAdded: state.products
   }
 }
 
@@ -18,19 +19,22 @@ class CreateProductContainer extends Component {
   }
 
   render() {
-    if (this.props.getReponDataProduct || this.props.errorResponDataProduct) {
+    if (this.props.getResponDataProduct || this.props.errorResponDataProduct) {
       if (this.props.errorResponDataProduct) {
         swal(
           "Failed!",
-          this.props.errorResponDataProduct,
+          "Check all inputs!!!!",
           "error"
         )
       } else {
+        debugger
         swal(
-          "User Created!",
-          "Name: " + this.props.getReponDataProduct.name,
+          "Success",
+          "Product added!",
           "success"
-        )
+        ).then(() => {
+          this.props.history.push('/detail/'+this.props.errorResponDataProduct.id)
+        })
       }
     }
 
